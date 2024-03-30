@@ -1,18 +1,13 @@
 pipeline {
     agent any 
-    environment {
-        PATH = "C:/path/to/new/virtual/environment/Scripts/python.exe;$PATH"
-    }
     stages {
         stage('install req') { 
-            steps {
-                sh '''python -m venv /path/to/new/virtual/environment
-                       pip install -r requirements.txt
-                ''' 
+            withPythonEnv('python3') {
+                sh 'pip install -r requirements.txt' 
             }
         }
         stage('run tests') { 
-            steps {
+            withPythonEnv('python3') {
                 sh 'pytest main.py' 
             }
         }
