@@ -3,12 +3,13 @@ pipeline {
     stages {
         stage('install req') { 
             steps {
+                sh 'python -m venv /path/to/new/virtual/environment'
                 sh 'pip install -r requirements.txt' 
             }
         }
         stage('run tests') { 
             steps {
-                sh 'python3 main.py' 
+                sh 'pytest main.py' 
             }
         }
     }
