@@ -12,9 +12,7 @@ pipeline {
                     sh 'curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list > /etc/apt/sources.list.d/mssql-release.list'
                     sh 'apt update -y'
                     sh '''export ACCEPT_EULA='y' '''
-                    sh 'locate -u'
-                    sh 'locate rpm | grep bin'
-                    sh 'rpm -ivh msodbcsql17'
+                    sh 'ACCEPT_EULA=Y dpkg --install msodbcsql17.deb'
                     sh 'apt-get install unixodbc-dev -y'
                         }
                     }
