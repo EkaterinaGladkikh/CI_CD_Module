@@ -1,5 +1,8 @@
 pipeline {
     agent any 
+    environment {
+        PATH = "C:/path/to/new/virtual/environment/Scripts/python.exe;$PATH"
+    }
     stages {
         stage('install req') { 
             steps {
