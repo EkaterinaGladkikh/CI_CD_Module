@@ -1,0 +1,6 @@
+pyodbc==5.1.0
+Faker==18.9.0
+pytest==8.1.1
+variables==0.0.1
+
+
