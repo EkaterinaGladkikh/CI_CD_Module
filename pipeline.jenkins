@@ -6,7 +6,8 @@ pipeline {
     stages {
         stage('install req') { 
             steps {
-                sh 'pip install -r requirements.txt' 
+                sh 'python -m venv /path/to/new/virtual/environment
+                    pip install -r requirements.txt' 
             }
         }
         stage('run tests') { 
