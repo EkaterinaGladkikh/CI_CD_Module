@@ -8,6 +8,7 @@ pipeline {
                     sh 'python3 -m venv path/to/venv'
                     sh 'path/to/venv/bin/pip install -r requirements.txt'
                     sh 'apt-get install unixodbc-dev -y'
+                    sh 'apt-get install msodbcsql17 -y'
                         }
                     }
                 }
