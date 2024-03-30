@@ -5,7 +5,7 @@ pipeline {
             steps {
                 withPythonEnv('python3') {
                     sh 'apt install python3.11-venv -y'
-                    sh 'venv/bin/python -m pip install -r requirements.txt' 
+                    sh '/usr/bin/python3.11 -m pip install -r requirements.txt' 
                         }
                     }
                 }
