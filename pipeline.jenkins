@@ -9,17 +9,14 @@ pipeline {
                     sh 'path/to/venv/bin/pip install -r requirements.txt'
 sh 'apt-get update'
 sh 'apt-get install wget'
-sh 'apt-get install openssl'
-sh 'apt-get install libssl-dev'
-sh 'wget ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.00.9.tar.gz'
-sh 'gunzip freetds-1.00.9.tar.gz'
-sh 'tar -xvf freetds-1.00.9.tar'
-sh 'cd freetds-1.00.9.tar'
-sh './configure --with-openssl=/usr/lib/ssl'
+sh 'apt-get install build-essential'
+sh 'apt-get install libc6-dev'
+sh 'wget ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.00.27.tar.gz'
+sh 'tar -xzf freetds-1.00.27.tar.gz'
+sh 'cd freetds-1.00.27'
+sh './configure --prefix=/usr/local --with-tdsver=7.3'
 sh 'make'
 sh 'make install'
-sh 'export PYMSSQL_DONT_BUILD_WITH_BUNDLED_FREETDS=1'
-sh '-H pip install git+https://github.com/pymssql/pymssql.git'
                         }
                     }
                 }
