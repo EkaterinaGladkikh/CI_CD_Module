@@ -7,14 +7,6 @@ pipeline {
                     sh 'apt install python3.11-venv -y'
                     sh 'python3 -m venv path/to/venv'
                     sh 'path/to/venv/bin/pip install -r requirements.txt'
-                    sh 'apt-get install apt-transport-https'
-                    sh 'curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -'
-                    sh 'curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list > /etc/apt/sources.list.d/mssql-release.list'
-                    sh 'apt update -y'
-                    sh '''export ACCEPT_EULA='y' '''
-                    sh 'curl https://packages.microsoft.com/debian/12/prod/pool/main/m/msodbcsql18/msodbcsql17_17.9.1.1-1_amd64.deb -o msodbcsql17.deb'
-                    sh 'ACCEPT_EULA=Y dpkg --install msodbcsql17.deb'
-                    sh 'apt-get install unixodbc-dev -y'
                         }
                     }
                 }
