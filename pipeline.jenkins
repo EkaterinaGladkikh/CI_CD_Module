@@ -7,6 +7,18 @@ pipeline {
                     sh 'apt install python3.11-venv -y'
                     sh 'python3 -m venv path/to/venv'
                     sh 'path/to/venv/bin/pip install -r requirements.txt'
+sh 'apt-get update'
+sh 'apt-get install openssl'
+sh 'apt-get install libssl-dev'
+sh 'wget ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.00.9.tar.gz'
+sh 'gunzip freetds-1.00.9.tar.gz'
+sh 'tar -xvf freetds-1.00.9.tar'
+sh 'cd freetds-1.00.9.tar'
+sh './configure --with-openssl=/usr/lib/ssl'
+sh 'make'
+sh 'make install'
+sh 'export PYMSSQL_DONT_BUILD_WITH_BUNDLED_FREETDS=1'
+sh '-H pip install git+https://github.com/pymssql/pymssql.git'
                         }
                     }
                 }
