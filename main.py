@@ -1,9 +1,15 @@
-import pyodbc
+import pymssql
 import pytest
 import variables
 
 
-conn = pyodbc.connect(variables.connectionString)
+conn = pymssql.connect(
+    server=variables.server,
+    user=variables.username,
+    password=variables.password,
+    database=variables.database_name,
+    as_dict=False
+)
 
 
 class TestDB:
@@ -12,7 +18,7 @@ class TestDB:
         count_dict = {'Person.Address': 19614, 'Production.Document': 13, '[Production].[UnitMeasure]': 38}
         sql_query = f"""
         SELECT
-            COUNT(*)
+            COUNT(*) AS count_number
         FROM 
         AdventureWorks2012.{table} AS a;
         """
@@ -21,7 +27,7 @@ class TestDB:
         cursor.execute(sql_query)
         records = cursor.fetchall()
 
-        assert records[0][0] == count_dict[table], f'The count of rows in {table} is not correct'
+        assert list(records)[0][0] == count_dict[table], f'The count of rows in {table} is not correct'
 
     def test_column_is_fk(self):
         sql_query = f"""
@@ -38,7 +44,7 @@ class TestDB:
         cursor.execute(sql_query)
         records = cursor.fetchall()
 
-        assert records[0][0] == 'StateProvinceID', 'The FK of the Person.Address table is not correct'
+        assert list(records)[0][0] == 'StateProvinceID', 'The FK of the Person.Address table is not correct'
 
     def test_column_values_not_empty(self):
         sql_query = f"""
