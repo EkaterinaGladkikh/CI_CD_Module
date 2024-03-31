@@ -8,6 +8,7 @@ pipeline {
                     sh 'python3 -m venv path/to/venv'
                     sh 'path/to/venv/bin/pip install -r requirements.txt'
 sh 'apt-get update'
+sh 'apt-get install wget'
 sh 'apt-get install openssl'
 sh 'apt-get install libssl-dev'
 sh 'wget ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.00.9.tar.gz'
