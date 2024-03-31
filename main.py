@@ -8,7 +8,7 @@ conn = pymssql.connect(
     user=variables.username,
     password=variables.password,
     database=variables.database_name,
-    port=variables.port
+    port=variables.port,
     as_dict=False
 )
 
