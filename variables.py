@@ -1,4 +1,4 @@
-server = 'host.docker.internal'
+server = 'LAPTOP-6BFCM7D0\SQLEXPRESS'
 database_name = 'AdventureWorks2012'
 username = 'UserForRobotFR'
 password = 'robotframework'
