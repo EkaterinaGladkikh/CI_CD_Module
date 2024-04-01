@@ -13,7 +13,7 @@ pipeline {
         stage('run tests') { 
             steps {
                 withPythonEnv('python3') {
-                    sh 'path/to/venv/bin/pytest main.py' 
+                    sh 'path/to/venv/bin/python3 check_pipeline.py' 
                         }
                     }
                 }
