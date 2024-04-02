@@ -17,5 +17,10 @@ pipeline {
                         }
                     }
                 }
+        stage('logs'){
+        	steps {
+        		echo "Tests are complete. Check the logs"
+        		}
+            }
         }
 }
